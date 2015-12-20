@@ -224,6 +224,63 @@ def englishNumber number
 	# 'remaining' is how much of the number we still have left to write out
 	# 'write' is the part we are currently writing out
 	remaining = number
+
+	#
+	write = remaining/1000000000000
+	remaining = remaining - write * 1000000000000
+
+	if write > 0
+		trillions = englishNumber write
+		numString = numString + trillions + ' trillion'
+
+		if remaining > 0
+			numString = numString + ' '
+		end
+	end
+	#
+
+	#
+	write = remaining/1000000000
+	remaining = remaining - write * 1000000000
+
+	if write > 0
+		billions = englishNumber write
+		numString = numString + billions + ' billion'
+
+		if remaining > 0
+			numString = numString + ' '
+		end
+	end
+	#
+
+	#
+	write = remaining/1000000
+	remaining = remaining - write * 1000000
+
+	if write > 0
+		millions = englishNumber write
+		numString = numString + millions + ' million'
+
+		if remaining > 0
+			numString = numString + ' '
+		end
+	end
+	#
+
+	#
+	write = remaining/1000
+	remaining = remaining - write * 1000
+	
+	if write > 0
+		thousands = englishNumber write
+		numString = numString + thousands + ' thousand'
+
+		if remaining > 0
+			numString = numString + ' '
+		end
+	end
+	#
+
 	write = remaining/100
 	remaining = remaining - write * 100
 
@@ -278,4 +335,9 @@ puts englishNumber(101)
 puts englishNumber(234)
 puts englishNumber(3211)
 puts englishNumber(999999)
+puts englishNumber(1000)
+puts englishNumber(10000)
+puts englishNumber(1000000)
+puts englishNumber(2605002)
+puts englishNumber(1000000000)
 puts englishNumber(1000000000000)

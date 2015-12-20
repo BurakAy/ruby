@@ -205,6 +205,7 @@ puts englishNumber(70)
 puts englishNumber(100)
 =end
 
+
 # Clean up above method with arrays
 def englishNumber number
 	if number < 0 # No negatives
@@ -319,6 +320,7 @@ def englishNumber number
 	numString
 end
 
+=begin
 puts englishNumber(1)
 puts englishNumber(59)
 puts englishNumber(44)
@@ -341,3 +343,29 @@ puts englishNumber(1000000)
 puts englishNumber(2605002)
 puts englishNumber(1000000000)
 puts englishNumber(1000000000000)
+=end
+
+bottles = 99
+
+while bottles != 0
+	puts englishNumber(bottles) + ' bottles of beer on the wall'
+	puts englishNumber(bottles) + ' bottles of beer'
+	bottles = bottles - 1
+	puts 'take one down, pass it around'
+
+	if bottles == 1
+		puts englishNumber(bottles) + ' bottle of beer on the wall'
+	else
+		puts englishNumber(bottles) + ' bottles of beer on the wall'
+	end
+
+	puts ''
+
+	if bottles == 1
+		puts englishNumber(bottles) + ' bottle of beer on the wall'
+		puts englishNumber(bottles) + ' bottle of beer'
+		bottles = bottles - 1
+		puts 'take one down, pass it around'
+		puts englishNumber(bottles) + ' bottles of beer on the wall'
+	end
+end

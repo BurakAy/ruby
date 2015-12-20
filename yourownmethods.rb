@@ -234,7 +234,7 @@ def englishNumber number
 		numString = numString + trillions + ' trillion'
 
 		if remaining > 0
-			numString = numString + ' '
+			numString = numString + ' and '
 		end
 	end
 	#
@@ -248,7 +248,7 @@ def englishNumber number
 		numString = numString + billions + ' billion'
 
 		if remaining > 0
-			numString = numString + ' '
+			numString = numString + ' and '
 		end
 	end
 	#
@@ -262,7 +262,7 @@ def englishNumber number
 		numString = numString + millions + ' million'
 
 		if remaining > 0
-			numString = numString + ' '
+			numString = numString + ' and '
 		end
 	end
 	#
@@ -276,7 +276,7 @@ def englishNumber number
 		numString = numString + thousands + ' thousand'
 
 		if remaining > 0
-			numString = numString + ' '
+			numString = numString + ' and '
 		end
 	end
 	#
@@ -289,7 +289,7 @@ def englishNumber number
 		numString = numString + hundreds + ' hundred'
 
 		if remaining > 0
-			numString = numString + ' '
+			numString = numString + ' and '
 		end
 	end
 

@@ -221,39 +221,39 @@ def englishNumber number
 	tensPlace = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
 	teens = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
 
-	# 'left' is how much of the number we still have left to write out
+	# 'remaining' is how much of the number we still have left to write out
 	# 'write' is the part we are currently writing out
-	left = number
-	write = left/100
-	left = left - write * 100
+	remaining = number
+	write = remaining/100
+	remaining = remaining - write * 100
 
 	if write > 0
 		hundreds = englishNumber write # recursion, call itself
 		numString = numString + hundreds + ' hundred'
 
-		if left > 0
+		if remaining > 0
 			numString = numString + ' '
 		end
 	end
 
-	write = left/10
-	left = left - write * 10
+	write = remaining/10
+	remaining = remaining - write * 10
 
 	if write > 0
-		if ((write == 1) and (left > 0))
-			numString = numString + teens[left - 1]
-			left = 0
+		if ((write == 1) and (remaining > 0))
+			numString = numString + teens[remaining - 1]
+			remaining = 0
 		else
 			numString = numString + tensPlace[write - 1]
 		end
 
-		if left > 0
+		if remaining > 0
 			numString = numString + '-'
 		end
 	end
 
-	write = left
-	left = 0
+	write = remaining
+	remaining = 0
 
 	if write > 0
 		numString = numString + onesPlace[write - 1]

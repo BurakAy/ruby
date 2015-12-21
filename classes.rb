@@ -84,4 +84,110 @@ colorHash.each do |codeType, color|
 end 
 =end
 
+=begin
+class Integer
+	def to_eng
+		if self == 5
+			english = 'five'
+		else
+			english = 'fifty-eight'
+		end
+
+		english
+	end
+end
+
+puts 5.to_eng
+puts 58.to_eng
+=end
+
+=begin
+# creating classes
+class Die
+	def roll
+		1 + rand(6)
+	end
+end
+
+# make a couple of dice
+dice = [Die.new, Die.new]
+
+# roll the dice
+dice.each do |die|
+	puts die.roll
+end
+=end
+
+=begin
+# instance variables
+class Die
+	def initialize # set up object when it is created
+		@numberShowing = 6
+	end
+
+	def roll
+		@numberShowing = 1 + rand(6)
+	end
+
+	def showing
+		@numberShowing
+	end
+end
+
+
+die = Die.new
+die.roll
+puts die.showing
+puts die.showing
+die.roll
+puts die.showing
+puts die.showing
+
+puts Die.new.showing # shows method initialized
+=end
+
+=begin
+class Number
+	def random
+		@numberShowing = 1 + rand(75)
+	end
+
+	def showing
+		@numberShowing
+	end
+end
+
+class Mega
+	def gold
+		@goldShowing = 1 + rand(15)
+	end
+
+	def display
+		@goldShowing
+	end
+end
+
+number = Number.new
+golden = Mega.new
+
+number.random
+puts number.showing
+
+number.random
+puts number.showing
+
+number.random
+puts number.showing
+
+number.random
+puts number.showing
+
+number.random
+puts number.showing
+
+puts
+
+golden.gold
+puts golden.display
+=end
 

@@ -315,7 +315,7 @@ pet.putToBed
 pet.putToBed
 =end
 
-
+=begin
 class OrangeTree
 	def initialize
 		@height = 0
@@ -379,3 +379,145 @@ tree.height
 tree.pickAnOrange
 tree.countTheOranges
 tree.countTheOranges
+=end
+
+
+class Dragon
+	def initialize name
+		@name = name
+		@asleep = false
+		@hunger = 10 # full
+		@potty = 0 # doesn't need to go
+
+		puts @name + ' is born.'
+	end
+
+	def command
+
+	end
+
+	def feed
+		puts 'You feed ' + @name + '.'
+		@hunger = 10
+		passageOfTime
+	end
+
+	def walk
+		puts 'You walk ' + @name + '.'
+		@potty = 0
+		passageOfTime
+	end
+
+	def putToBed
+		puts 'You put ' + @name + ' to bed.'
+		@asleep = true
+
+		3.times do
+			if @asleep
+			   	passageOfTime
+			end
+
+			if @asleep
+				puts @name + ' snores, filling the room with smoke.'
+			end
+		end
+
+		if @asleep
+			@asleep = false
+			puts @name + ' wakes up slowly.'
+		end
+	end
+
+	def toss
+		puts 'You toss ' + @name + ' up into the air.'
+		puts 'He giggles, which singes your eyebrows.'
+		passageOfTime
+	end
+
+	def rock
+		puts 'You rock ' + @name + ' gently.'
+		@asleep = true
+		puts 'He briefly dozes off...'
+		passageOfTime
+
+		if @asleep
+			@asleep = false
+			puts '... but wakes up when you stop.'
+		end
+	end
+
+	# "private" means that the methods defined here are
+  	# methods internal to the object.  (You can feed
+  	# your dragon, but you can't ask him if he's hungry.)
+	private
+
+	def hungry? # method names can end with '?', usually on when method returns true or false.
+		@hunger <= 2
+	end
+
+	def poopy?
+		@potty >= 8
+	end
+
+	def passageOfTime
+		if @hunger > 0
+			# move food from stomach to intestine
+			@hunger = @hunger - 1
+			@potty = @potty + 1
+		else
+			# the dragon is starving!
+			if @asleep
+				@asleep = false
+				puts 'He wakes up suddenly!'
+			end
+			puts @name + ' is starving! In desperation he ate YOU!'
+			exit # quits the program
+		end
+
+		if @potty >= 10
+			@potty = 0
+			puts 'Whoops! ' + @name + ' had an accident ... :('
+		end
+
+		if hungry?
+			if @asleep
+				@asleep = false
+				puts 'He wakes up suddenly!'
+			end
+			puts @name + '\'s stomach grumbles...'
+		end
+
+		if poopy?
+			if @asleep
+				@asleep = false
+				puts 'He wakes up suddenly!'
+			end
+			puts @name + ' does the potty dance...'
+		end
+	end
+end
+
+pet = Dragon.new 'Bruce'
+
+command = ''
+
+while command != 'exit'
+	puts 'Enter a command to control your dragon: (feed, walk, bedtime, rock, toss, exit'
+	command = gets.chomp.downcase
+
+	if command == 'feed'
+		pet.feed
+	elsif command == 'walk'
+		pet.walk
+	elsif command == 'bedtime'
+		pet.putToBed
+	elsif command == 'toss'
+		pet.toss
+	elsif command == 'rock'
+		pet.rock
+	elsif command == 'exit'
+		exit
+	else
+		puts 'Unrecognized command. Try again'
+	end 
+end

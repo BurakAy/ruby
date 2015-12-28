@@ -191,7 +191,7 @@ golden.gold
 puts golden.display
 =end
 
-
+=begin
 class Dragon
 	def initialize name
 		@name = name
@@ -313,4 +313,69 @@ pet.putToBed
 pet.putToBed
 pet.putToBed
 pet.putToBed
+=end
 
+
+class OrangeTree
+	def initialize
+		@height = 0
+		@fruit = 0
+		@age = 0
+	end
+
+	def height
+		puts 'The tree has grown ' + @height.to_s + ' inches this year.'
+		oneYearPasses
+	end
+
+	def countTheOranges
+		puts 'The tree has ' + @fruit.to_s + ' oranges.'
+		oneYearPasses
+	end
+
+	def pickAnOrange
+		if @fruit < 1
+			puts 'There are no oranges to pick this year'
+		else
+			puts 'The orange you have picked from the tree was very delicious!'
+			@fruit = @fruit - 1
+		end
+		oneYearPasses
+	end
+
+	def oneYearPasses
+		puts 'A year has passed'
+		@age = @age + 1
+		@height = @height + 2
+		fruit = 0
+
+		if dead?
+			puts 'The tree has died'
+			exit
+		end
+
+		if @age > 2
+			@fruit = @age * 10
+		else
+			@fruit = 0
+		end
+	end
+
+	private
+
+	def dead?
+		@age > 10
+	end
+
+	
+end
+
+puts ''
+tree = OrangeTree.new
+tree.height
+tree.pickAnOrange
+tree.countTheOranges
+tree.height
+tree.pickAnOrange
+tree.countTheOranges
+tree.countTheOranges
